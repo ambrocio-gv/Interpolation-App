@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Square icon-only mark with generous safe margins (no text) -->
+  <g transform="translate(76,76)">
+    <!-- Outer box 360x360 inside 512 canvas (safe zone) -->
+    <rect x="0" y="0" width="360" height="360" fill="none" stroke="#2B4F87" stroke-width="16"/>
+    <!-- Left triangle -->
+    <polygon points="36,60 180,180 36,300" fill="#2B4F87"/>
+    <!-- Right triangle -->
+    <polygon points="324,60 180,180 324,300" fill="#2B4F87"/>
+  </g>
+</svg>

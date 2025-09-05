@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
+  <!-- White Background -->
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Logo Symbol - Square border -->
+  <rect x="60" y="100" width="80" height="80" fill="none" stroke="#2B4F87" stroke-width="4"/>
+  
+  <!-- Left triangle -->
+  <polygon points="70,110 100,140 70,170" fill="#2B4F87"/>
+  
+  <!-- Right triangle -->
+  <polygon points="130,110 100,140 130,170" fill="#2B4F87"/>
+
+  <!-- DECKMASTER Text -->
+  <text x="160" y="145" font-family="Arial, sans-serif" font-weight="bold" font-size="50" fill="#E41E25">DECKMASTER</text>
+
+  <!-- MARINE Text -->
+  <text x="160" y="185" font-family="Arial, sans-serif" font-weight="bold" font-size="50" fill="#2B4F87">MARINE</text>
+
+  <!-- Registered trademark -->
+  <text x="650" y="135" font-family="Arial, sans-serif" font-size="20" fill="#2B4F87">®</text>
+
+  <!-- Tagline -->
+  <text x="160" y="220" font-family="Arial, sans-serif" font-size="24" fill="#2B4F87">The Ship Officer's Companion</text>
+</svg>

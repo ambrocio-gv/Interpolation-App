@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Interpolation.App.MainPage"
+             Title="Interpolation"
+             BackgroundColor="{StaticResource Secondary}">
+
+  <ScrollView>
+    <VerticalStackLayout Padding="16" Spacing="16">
+
+      <!-- Mode -->
+      <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8" Margin="0,0,0,8">
+        <Label Text="Mode:" VerticalOptions="Center" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
+        <Picker x:Name="modePicker" Grid.Column="1"
+                Title="Select mode"
+                SelectedIndexChanged="OnModeChanged"
+                TextColor="{StaticResource Primary}">
+          <Picker.Items>
+            <x:String>Single</x:String>
+            <x:String>Double</x:String>
+          </Picker.Items>
+        </Picker>
+      </Grid>
+
+      <!-- ===== SINGLE MODE SECTION ===== -->
+      <Border x:Name="singleFrame" Stroke="{StaticResource Primary}" Padding="16" BackgroundColor="#F8F9FA" IsVisible="True" HorizontalOptions="Fill" Margin="0,8,0,0">
+        <VerticalStackLayout Spacing="12">
+          <Label Text="Single (1-D) Linear Interpolation" FontAttributes="Bold" />
+
+          <!-- Grid mirroring Double layout: X top row, Y row values -->
+          <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+            <!-- X row: x1 | x (target) | x2 -->
+            <Border Grid.Row="0" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="s_x1" Placeholder="x1 (Left)" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="s_x" Placeholder="x (Target)" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="2" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="s_x2" Placeholder="x2 (Right)" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+
+            <!-- Y row: y1 | y (computed) | y2 -->
+            <Border Grid.Row="1" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="s_y1" Placeholder="y at x1" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+            <Label  x:Name="s_out" Grid.Row="1" Grid.Column="1" BackgroundColor="#FFF59D" Padding="8"
+                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Border Grid.Row="1" Grid.Column="2" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="s_y2" Placeholder="y at x2" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+          </Grid>
+
+          <HorizontalStackLayout Spacing="12" Margin="0,4,0,0">
+            <Button Text="Interpolate" Clicked="OnSingleCompute" BackgroundColor="{StaticResource Primary}" TextColor="White"/>
+            <Button Text="Clear" Clicked="OnSingleClear" BackgroundColor="{StaticResource Tertiary}" TextColor="White"/>
+          </HorizontalStackLayout>
+
+          <Label x:Name="s_err" TextColor="{StaticResource Tertiary}" />
+        </VerticalStackLayout>
+      </Border>
+
+      <!-- ===== DOUBLE MODE SECTION ===== -->
+      <Border x:Name="doubleFrame" Stroke="{StaticResource Primary}" Padding="16" BackgroundColor="#F8F9FA" IsVisible="False" HorizontalOptions="Fill" Margin="0,8,0,0">
+        <VerticalStackLayout Spacing="12">
+          <Label Text="Bilinear Interpolation" FontAttributes="Bold" />
+
+          <!-- Composite grid matching target UI -->
+          <Grid ColumnDefinitions="Auto,*,*,*" RowDefinitions="Auto,*,*,*" ColumnSpacing="12" RowSpacing="12">
+            <!-- X inputs (top row) -->
+            <Label Text="" Grid.Row="0" Grid.Column="0" />
+            <Border Grid.Row="0" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="xL" Placeholder="Left" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="2" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="xT" Placeholder="Target" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="3" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="xR" Placeholder="Right" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+
+            <!-- Row 1: Y Low + cells -->
+            <Border Grid.Row="1" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="yL" Placeholder="Low" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+            <Border Grid.Row="1" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="z11" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+            <Label x:Name="v_12" Grid.Row="1" Grid.Column="2" BackgroundColor="#C0C0C0" Padding="6"
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Border Grid.Row="1" Grid.Column="3" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="z13" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+
+            <!-- Row 2: Y Target + cells -->
+            <Border Grid.Row="2" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="yT" Placeholder="Target" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+            <Label x:Name="v_21" Grid.Row="2" Grid.Column="1" BackgroundColor="#C0C0C0" Padding="6"
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Label x:Name="v_22" Grid.Row="2" Grid.Column="2" BackgroundColor="#FFF59D" Padding="6"
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Label x:Name="v_23" Grid.Row="2" Grid.Column="3" BackgroundColor="#C0C0C0" Padding="6"
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+            <!-- Row 3: Y High + cells -->
+            <Border Grid.Row="3" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="yH" Placeholder="High" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+            <Border Grid.Row="3" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="z31" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+            <Label x:Name="v_32" Grid.Row="3" Grid.Column="2" BackgroundColor="#C0C0C0" Padding="6"
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Border Grid.Row="3" Grid.Column="3" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <Entry x:Name="z33" Keyboard="Numeric"
+                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+            </Border>
+          </Grid>
+
+          <HorizontalStackLayout Spacing="12" Margin="0,10,0,0">
+            <Button Text="Interpolate" Clicked="OnDoubleCompute" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+            <Button Text="Clear" Clicked="OnDoubleClear" BackgroundColor="{StaticResource Tertiary}" TextColor="White" />
+          </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+      </Border>
+
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>
