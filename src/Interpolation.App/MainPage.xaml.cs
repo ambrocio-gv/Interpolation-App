@@ -8,13 +8,18 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        modePicker.SelectedIndex = 0; // default: Single
+        // Default to Single mode
+        rbSingle.IsChecked = true;
+        singleFrame.IsVisible = true;
+        doubleFrame.IsVisible = false;
     }
 
-    // ===== Mode switching =====
-    void OnModeChanged(object sender, EventArgs e)
+    // ===== Mode switching (RadioButtons) =====
+    void OnModeRadioChanged(object sender, CheckedChangedEventArgs e)
     {
-        var isSingle = modePicker.SelectedIndex == 0;
+        // Only update when the change is to checked state
+        if (!e.Value) return;
+        var isSingle = rbSingle.IsChecked;
         singleFrame.IsVisible = isSingle;
         doubleFrame.IsVisible = !isSingle;
     }
