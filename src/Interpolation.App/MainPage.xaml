@@ -23,32 +23,52 @@
         <VerticalStackLayout Spacing="12">
           <Label Text="Single (1-D) Linear Interpolation" FontAttributes="Bold" />
 
-          <!-- Grid mirroring Double layout: X top row, Y row values -->
-          <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
-            <!-- X row: x1 | x (target) | x2 -->
+          <!-- 3 Row Layout: Each row has X value and corresponding Y value -->
+          <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+
+            <!-- Row 1: x1 - y at x1 -->
             <Border Grid.Row="0" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="s_x1" Placeholder="x1 (Left)" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="A1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="s_a1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
             <Border Grid.Row="0" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="s_x" Placeholder="x (Target)" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
-            </Border>
-            <Border Grid.Row="0" Grid.Column="2" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="s_x2" Placeholder="x2 (Right)" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="B1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="s_b1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
 
-            <!-- Y row: y1 | y (computed) | y2 -->
+            <!-- Row 2: x target - y at x target (computed result) -->
             <Border Grid.Row="1" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="s_y1" Placeholder="y at x1" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="A2" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="s_a2" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
-            <Label  x:Name="s_out" Grid.Row="1" Grid.Column="1" BackgroundColor="#FFF59D" Padding="8"
-                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-            <Border Grid.Row="1" Grid.Column="2" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="s_y2" Placeholder="y at x2" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Grid.Row="1" Grid.Column="1" Spacing="2" Padding="4,2,4,4" BackgroundColor="#FFF59D">
+              <Label Text="B2" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label x:Name="s_b2" Padding="8" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="" />
+              </VerticalStackLayout>
+
+            <!-- Row 3: x2 - y at x2 -->
+            <Border Grid.Row="2" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="A3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="s_a3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="B3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="s_b3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
           </Grid>
 
@@ -71,60 +91,100 @@
             <!-- X inputs (top row) -->
             <Label Text="" Grid.Row="0" Grid.Column="0" />
             <Border Grid.Row="0" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="xL" Placeholder="Left" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="D1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="d1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
             <Border Grid.Row="0" Grid.Column="2" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="xT" Placeholder="Target" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="D2" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="d2" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
             <Border Grid.Row="0" Grid.Column="3" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="xR" Placeholder="Right" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="D3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="d3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
 
             <!-- Row 1: Y Low + cells -->
             <Border Grid.Row="1" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="yL" Placeholder="Low" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="A1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="a1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
             <Border Grid.Row="1" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="z11" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="B1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="b1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
-            <Label x:Name="v_12" Grid.Row="1" Grid.Column="2" BackgroundColor="#C0C0C0" Padding="6"
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <VerticalStackLayout Grid.Row="1" Grid.Column="2" Spacing="2" Padding="4,2,4,4" BackgroundColor="#C0C0C0">
+              <Label Text="A1D2" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label x:Name="a1d2" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </VerticalStackLayout>
             <Border Grid.Row="1" Grid.Column="3" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="z13" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="C1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="c1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
 
             <!-- Row 2: Y Target + cells -->
             <Border Grid.Row="2" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="yT" Placeholder="Target" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="A2" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="a2" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
-            <Label x:Name="v_21" Grid.Row="2" Grid.Column="1" BackgroundColor="#C0C0C0" Padding="6"
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-            <Label x:Name="v_22" Grid.Row="2" Grid.Column="2" BackgroundColor="#FFF59D" Padding="6"
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-            <Label x:Name="v_23" Grid.Row="2" Grid.Column="3" BackgroundColor="#C0C0C0" Padding="6"
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <VerticalStackLayout Grid.Row="2" Grid.Column="1" Spacing="2" Padding="4,2,4,4" BackgroundColor="#C0C0C0">
+              <Label Text="B2" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label x:Name="b2" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="2" Grid.Column="2" Spacing="2" Padding="4,2,4,4" BackgroundColor="#FFF59D">
+              <Label Text="A2D2" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label x:Name="a2d2" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="2" Grid.Column="3" Spacing="2" Padding="4,2,4,4" BackgroundColor="#C0C0C0">
+              <Label Text="C2" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label x:Name="c2" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </VerticalStackLayout>
 
             <!-- Row 3: Y High + cells -->
             <Border Grid.Row="3" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="yH" Placeholder="High" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="A3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="a3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
             <Border Grid.Row="3" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="z31" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="B3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="b3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
-            <Label x:Name="v_32" Grid.Row="3" Grid.Column="2" BackgroundColor="#C0C0C0" Padding="6"
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <VerticalStackLayout Grid.Row="3" Grid.Column="2" Spacing="2" Padding="4,2,4,4" BackgroundColor="#C0C0C0">
+              <Label Text="A3D3" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label x:Name="a3d3" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </VerticalStackLayout>
             <Border Grid.Row="3" Grid.Column="3" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <Entry x:Name="z33" Keyboard="Numeric"
-                     BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
+                <Label Text="C3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Entry x:Name="c3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
+                       BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
+              </VerticalStackLayout>
             </Border>
           </Grid>
 
