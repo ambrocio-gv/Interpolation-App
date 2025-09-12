@@ -12,6 +12,27 @@ public partial class MainPage : ContentPage
         rbSingle.IsChecked = true;
         singleFrame.IsVisible = true;
         doubleFrame.IsVisible = false;
+        
+        // Wire up the unified buttons
+        btnInterpolate.Clicked += OnUnifiedInterpolate;
+        btnClear.Clicked += OnUnifiedClear;
+    }
+
+    // ===== Unified Button Handlers =====
+    void OnUnifiedInterpolate(object? sender, EventArgs e)
+    {
+        if (rbSingle.IsChecked)
+            OnSingleCompute(sender!, e);
+        else
+            OnDoubleCompute(sender!, e);
+    }
+
+    void OnUnifiedClear(object? sender, EventArgs e)
+    {
+        if (rbSingle.IsChecked)
+            OnSingleClear(sender!, e);
+        else
+            OnDoubleClear(sender!, e);
     }
 
     // ===== Mode switching (RadioButtons) =====
@@ -146,10 +167,13 @@ public partial class MainPage : ContentPage
             V22 = V12; // Degenerate: center equals horizontal interpolation result
         }
 
+        // Only show center result (a2d2) if we have all core inputs for proper bilinear interpolation
+        bool hasAllCoreInputs = hasX && hasY && hasZ11 && hasZ13 && hasZ31 && hasZ33;
+
         // Update UI (labels show "—" for nulls)
         a1d2.Text = T(V12);
         b2.Text   = T(V21);
-        a2d2.Text = T(V22);
+        a2d2.Text = hasAllCoreInputs ? T(V22) : "";  // Only show result when all inputs complete
         c2.Text   = T(V23);
         a3d3.Text = T(V32);
     }

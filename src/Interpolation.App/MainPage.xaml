@@ -7,14 +7,11 @@
   <ScrollView>
     <VerticalStackLayout Padding="16" Spacing="16">
 
-      <!-- Mode (Radio Buttons instead of dropdown) -->
-      <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8" Margin="0,0,0,8">
-        <Label Text="Mode:" VerticalOptions="Center" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
-        <HorizontalStackLayout Grid.Column="1" Spacing="12" VerticalOptions="Center">
-          <RadioButton x:Name="rbSingle" GroupName="ModeGroup" CheckedChanged="OnModeRadioChanged" 
-                       Content="Single" />
-          <RadioButton x:Name="rbDouble" GroupName="ModeGroup" CheckedChanged="OnModeRadioChanged" 
-                       Content="Double" />
+      <!-- Top Action Buttons (Right Aligned) -->
+      <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,8">
+        <HorizontalStackLayout Grid.Column="1" Spacing="12" HorizontalOptions="End">
+          <Button x:Name="btnInterpolate" Text="Interpolate" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+          <Button x:Name="btnClear" Text="Clear" BackgroundColor="{StaticResource Tertiary}" TextColor="White" />
         </HorizontalStackLayout>
       </Grid>
 
@@ -29,14 +26,14 @@
             <!-- Row 1: x1 - y at x1 -->
             <Border Grid.Row="0" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="A1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="A1" FontSize="10"/>
                 <Entry x:Name="s_a1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
             <Border Grid.Row="0" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="B1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="B1" FontSize="10"/>
                 <Entry x:Name="s_b1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
@@ -45,37 +42,32 @@
             <!-- Row 2: x target - y at x target (computed result) -->
             <Border Grid.Row="1" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="A2" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="A2" FontSize="10"/>
                 <Entry x:Name="s_a2" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
-              <VerticalStackLayout Grid.Row="1" Grid.Column="1" Spacing="2" Padding="4,2,4,4" BackgroundColor="#FFF59D">
-              <Label Text="B2" FontSize="10" TextColor="{StaticResource Primary}"/>
+            <VerticalStackLayout Grid.Row="1" Grid.Column="1" Spacing="2" Padding="4,2,4,4" BackgroundColor="#FFF59D">
+              <Label Text="B2" FontSize="10"/>
               <Label x:Name="s_b2" Padding="8" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="" />
-              </VerticalStackLayout>
+            </VerticalStackLayout>
 
             <!-- Row 3: x2 - y at x2 -->
             <Border Grid.Row="2" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="A3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="A3" FontSize="10"/>
                 <Entry x:Name="s_a3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
             <Border Grid.Row="2" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="B3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="B3" FontSize="10"/>
                 <Entry x:Name="s_b3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
           </Grid>
-
-          <HorizontalStackLayout Spacing="12" Margin="0,4,0,0">
-            <Button Text="Interpolate" Clicked="OnSingleCompute" BackgroundColor="{StaticResource Primary}" TextColor="White"/>
-            <Button Text="Clear" Clicked="OnSingleClear" BackgroundColor="{StaticResource Tertiary}" TextColor="White"/>
-          </HorizontalStackLayout>
 
           <Label x:Name="s_err" TextColor="{StaticResource Tertiary}" />
         </VerticalStackLayout>
@@ -92,21 +84,21 @@
             <Label Text="" Grid.Row="0" Grid.Column="0" />
             <Border Grid.Row="0" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="D1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="D1" FontSize="10"/>
                 <Entry x:Name="d1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
             <Border Grid.Row="0" Grid.Column="2" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="D2" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="D2" FontSize="10"/>
                 <Entry x:Name="d2" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
             <Border Grid.Row="0" Grid.Column="3" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="D3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="D3" FontSize="10"/>
                 <Entry x:Name="d3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
@@ -115,25 +107,25 @@
             <!-- Row 1: Y Low + cells -->
             <Border Grid.Row="1" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="A1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="A1" FontSize="10"/>
                 <Entry x:Name="a1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
             <Border Grid.Row="1" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="B1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="B1" FontSize="10"/>
                 <Entry x:Name="b1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
             <VerticalStackLayout Grid.Row="1" Grid.Column="2" Spacing="2" Padding="4,2,4,4" BackgroundColor="#C0C0C0">
-              <Label Text="A1D2" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label Text="A1D2" FontSize="10"/>
               <Label x:Name="a1d2" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
             </VerticalStackLayout>
             <Border Grid.Row="1" Grid.Column="3" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="C1" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="C1" FontSize="10"/>
                 <Entry x:Name="c1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
@@ -142,59 +134,65 @@
             <!-- Row 2: Y Target + cells -->
             <Border Grid.Row="2" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="A2" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="A2" FontSize="10"/>
                 <Entry x:Name="a2" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
             <VerticalStackLayout Grid.Row="2" Grid.Column="1" Spacing="2" Padding="4,2,4,4" BackgroundColor="#C0C0C0">
-              <Label Text="B2" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label Text="B2" FontSize="10"/>
               <Label x:Name="b2" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="2" Grid.Column="2" Spacing="2" Padding="4,2,4,4" BackgroundColor="#FFF59D">
-              <Label Text="A2D2" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label Text="A2D2" FontSize="10"/>
               <Label x:Name="a2d2" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="2" Grid.Column="3" Spacing="2" Padding="4,2,4,4" BackgroundColor="#C0C0C0">
-              <Label Text="C2" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label Text="C2" FontSize="10"/>
               <Label x:Name="c2" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
             </VerticalStackLayout>
 
             <!-- Row 3: Y High + cells -->
             <Border Grid.Row="3" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="A3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="A3" FontSize="10"/>
                 <Entry x:Name="a3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
             <Border Grid.Row="3" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="B3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="B3" FontSize="10"/>
                 <Entry x:Name="b3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
             <VerticalStackLayout Grid.Row="3" Grid.Column="2" Spacing="2" Padding="4,2,4,4" BackgroundColor="#C0C0C0">
-              <Label Text="A3D3" FontSize="10" TextColor="{StaticResource Primary}"/>
+              <Label Text="A3D3" FontSize="10"/>
               <Label x:Name="a3d3" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
             </VerticalStackLayout>
             <Border Grid.Row="3" Grid.Column="3" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="C3" FontSize="10" TextColor="{StaticResource Primary}"/>
+                <Label Text="C3" FontSize="10"/>
                 <Entry x:Name="c3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
           </Grid>
 
-          <HorizontalStackLayout Spacing="12" Margin="0,10,0,0">
-            <Button Text="Interpolate" Clicked="OnDoubleCompute" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-            <Button Text="Clear" Clicked="OnDoubleClear" BackgroundColor="{StaticResource Tertiary}" TextColor="White" />
-          </HorizontalStackLayout>
-
         </VerticalStackLayout>
       </Border>
+
+      <!-- Mode Selection (Bottom) -->
+      <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8" Margin="0,8,0,0">
+        <Label Text="Mode:" VerticalOptions="Center" FontAttributes="Bold"/>
+        <HorizontalStackLayout Grid.Column="1" Spacing="12" VerticalOptions="Center">
+          <RadioButton x:Name="rbSingle" GroupName="ModeGroup" CheckedChanged="OnModeRadioChanged" 
+                       Content="Single" />
+          <RadioButton x:Name="rbDouble" GroupName="ModeGroup" CheckedChanged="OnModeRadioChanged" 
+                       Content="Double" />
+        </HorizontalStackLayout>
+      </Grid>
 
     </VerticalStackLayout>
   </ScrollView>

@@ -51,7 +51,7 @@
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<!-- Ensure splash icon is also available as a drawable resource -->
-		<MauiImage Include="Resources\Splash\splash_icon.svg" />
+		<MauiImage Include="Resources\Splash\splash_icon.png" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 		
 		<!-- Custom Fonts -->

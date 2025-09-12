@@ -9,7 +9,7 @@
     <Shell.TitleView>
         <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" Padding="8,0" BackgroundColor="#F5F5F5">
             <Image Grid.Column="0" 
-                   Source="simple_logo.svg"
+                   Source="final_logo_equalpadding.png"
                    WidthRequest="28"
                    HeightRequest="28"
                    VerticalOptions="Center"/>
