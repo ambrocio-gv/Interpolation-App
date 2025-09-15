@@ -95,6 +95,8 @@ public partial class MainPage : ContentPage
 
         var y = InterpolationMath.Single(x, x1, x2, y1, y2);
         s_b2.Text = y?.ToString("0.#####", CultureInfo.InvariantCulture) ?? "—";
+        // Hide soft keyboard after a successful solve
+        DismissKeyboard();
     }
 
     void OnSingleClear(object sender, EventArgs e)
@@ -176,6 +178,10 @@ public partial class MainPage : ContentPage
         a2d2.Text = hasAllCoreInputs ? T(V22) : "";  // Only show result when all inputs complete
         c2.Text   = T(V23);
         a3d3.Text = T(V32);
+
+        // Hide soft keyboard only when full bilinear result is produced
+        if (hasAllCoreInputs && V22.HasValue)
+            DismissKeyboard();
     }
 
     void OnDoubleClear(object sender, EventArgs e)
@@ -189,6 +195,23 @@ public partial class MainPage : ContentPage
     // ===== helpers =====
     Task A(string f) => DisplayAlert("Invalid Input", $"Please enter a valid number for {f}.", "OK");
     static string T(double? v) => v?.ToString("0.#####", CultureInfo.InvariantCulture) ?? "—";
+
+    // Dismiss soft keyboard by removing focus from any Entry fields
+    void DismissKeyboard()
+    {
+        try
+        {
+            foreach (var entry in new Entry?[]
+            {
+                s_a1, s_a2, s_a3, s_b1, s_b3,
+                d1, d2, d3, a1, a2, a3, b1, c1, b3, c3
+            })
+            {
+                entry?.Unfocus();
+            }
+        }
+        catch { /* no-op: best-effort */ }
+    }
 
     // Handle Enter/Done navigation between inputs
     void OnEntryCompleted(object sender, EventArgs e)

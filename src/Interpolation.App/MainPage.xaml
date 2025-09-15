@@ -5,64 +5,72 @@
              BackgroundColor="{StaticResource Secondary}">
 
   <ScrollView>
-    <VerticalStackLayout Padding="16" Spacing="16">
+    <VerticalStackLayout Padding="16,16,16,12" Spacing="8">
 
       <!-- Top Action Buttons (Right Aligned) -->
-      <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,8">
+      <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,0">
         <HorizontalStackLayout Grid.Column="1" Spacing="12" HorizontalOptions="End">
-          <Button x:Name="btnInterpolate" Text="Interpolate" BackgroundColor="{StaticResource Primary}" TextColor="White" />
-          <Button x:Name="btnClear" Text="Clear" BackgroundColor="{StaticResource Tertiary}" TextColor="White" />
+          <Button x:Name="btnInterpolate" Text="Interpolate" BackgroundColor="{StaticResource Primary}" TextColor="White">
+            <Button.Shadow>
+              <Shadow Opacity="0.15" Radius="6" Offset="0,2" />
+            </Button.Shadow>
+          </Button>
+          <Button x:Name="btnClear" Text="Clear" BackgroundColor="{StaticResource Tertiary}" TextColor="White">
+            <Button.Shadow>
+              <Shadow Opacity="0.15" Radius="6" Offset="0,2" />
+            </Button.Shadow>
+          </Button>
         </HorizontalStackLayout>
       </Grid>
 
       <!-- ===== SINGLE MODE SECTION ===== -->
-      <Border x:Name="singleFrame" Stroke="{StaticResource Primary}" Padding="16" BackgroundColor="#F8F9FA" IsVisible="True" HorizontalOptions="Fill" Margin="0,8,0,0">
+      <Border x:Name="singleFrame" Style="{StaticResource CardBorder}" Stroke="{StaticResource Primary}" BackgroundColor="#F8F9FA" IsVisible="True" HorizontalOptions="Fill" Margin="0,0,0,0">
         <VerticalStackLayout Spacing="12">
-          <Label Text="Single (1-D) Linear Interpolation" FontAttributes="Bold" />
+          <Label Text="Single (1-D) Linear Interpolation" FontAttributes="Bold" TextColor="#333333" />
 
           <!-- 3 Row Layout: Each row has X value and corresponding Y value -->
           <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="12">
 
             <!-- Row 1: x1 - y at x1 -->
-            <Border Grid.Row="0" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="A1" FontSize="10"/>
+            <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource InputCellBorder}">
+              <VerticalStackLayout Spacing="2">
+                <Label Text="A1" Style="{StaticResource MicroLabel}"/>
                 <Entry x:Name="s_a1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
-            <Border Grid.Row="0" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="B1" FontSize="10"/>
+            <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource InputCellBorder}">
+              <VerticalStackLayout Spacing="2">
+                <Label Text="B1" Style="{StaticResource MicroLabel}"/>
                 <Entry x:Name="s_b1" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
 
             <!-- Row 2: x target - y at x target (computed result) -->
-            <Border Grid.Row="1" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="A2" FontSize="10"/>
+            <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource InputCellBorder}">
+              <VerticalStackLayout Spacing="2">
+                <Label Text="A2" Style="{StaticResource MicroLabel}"/>
                 <Entry x:Name="s_a2" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
             <VerticalStackLayout Grid.Row="1" Grid.Column="1" Spacing="2" Padding="4,2,4,4" BackgroundColor="#FFF59D">
-              <Label Text="B2" FontSize="10"/>
+              <Label Text="B2" Style="{StaticResource MicroLabel}"/>
               <Label x:Name="s_b2" Padding="8" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="" />
             </VerticalStackLayout>
 
             <!-- Row 3: x2 - y at x2 -->
-            <Border Grid.Row="2" Grid.Column="0" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="A3" FontSize="10"/>
+            <Border Grid.Row="2" Grid.Column="0" Style="{StaticResource InputCellBorder}">
+              <VerticalStackLayout Spacing="2">
+                <Label Text="A3" Style="{StaticResource MicroLabel}"/>
                 <Entry x:Name="s_a3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
             </Border>
-            <Border Grid.Row="2" Grid.Column="1" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
-              <VerticalStackLayout Spacing="2" Padding="4,2,4,4">
-                <Label Text="B3" FontSize="10"/>
+            <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource InputCellBorder}">
+              <VerticalStackLayout Spacing="2">
+                <Label Text="B3" Style="{StaticResource MicroLabel}"/>
                 <Entry x:Name="s_b3" Keyboard="Numeric" ReturnType="Done" Completed="OnEntryCompleted"
                        BackgroundColor="Transparent" TextColor="Black" HorizontalTextAlignment="Center" />
               </VerticalStackLayout>
@@ -74,7 +82,7 @@
       </Border>
 
       <!-- ===== DOUBLE MODE SECTION ===== -->
-      <Border x:Name="doubleFrame" Stroke="{StaticResource Primary}" Padding="16" BackgroundColor="#F8F9FA" IsVisible="False" HorizontalOptions="Fill" Margin="0,8,0,0">
+      <Border x:Name="doubleFrame" Style="{StaticResource CardBorder}" Stroke="{StaticResource Primary}" BackgroundColor="#F8F9FA" IsVisible="False" HorizontalOptions="Fill" Margin="0,0,0,0">
         <VerticalStackLayout Spacing="12">
           <Label Text="Bilinear Interpolation" FontAttributes="Bold" />
 

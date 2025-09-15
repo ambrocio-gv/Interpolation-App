@@ -441,4 +441,31 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+    <!-- Reusable shapes/styles for subtle, modern look -->
+    <RoundRectangle x:Key="CardCorner" CornerRadius="12" />
+    <RoundRectangle x:Key="InputCorner" CornerRadius="8" />
+
+    <Style x:Key="CardBorder" TargetType="Border">
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="StrokeShape" Value="{StaticResource CardCorner}"/>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Opacity="0.12" Radius="8" Offset="0,2" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="InputCellBorder" TargetType="Border">
+        <Setter Property="Stroke" Value="{StaticResource Gray200}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeShape" Value="{StaticResource InputCorner}"/>
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Padding" Value="4,2,4,4" />
+    </Style>
+
+    <Style x:Key="MicroLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+    </Style>
+
 </ResourceDictionary>

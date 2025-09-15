@@ -1,16 +1,10 @@
-DECKMASTER MARINE LOGO PLACEHOLDER
+SPLASH SCREEN CONFIGURATION
 
-To complete the splash screen setup:
+This app is configured to use a simple colored splash screen without any logo.
 
-1. Save your Deckmaster Marine logo as "deckmaster-logo.png" in this folder
-2. Recommended size: 1200x600 pixels (or similar 2:1 ratio to match the original)
-3. Use PNG format with transparent background for best results
-4. The logo should be high resolution for crisp display on all devices
+Current configuration:
+- Background color: #233973 (blue)
+- No logo image required
+- Clean, minimal splash screen
 
-The project is already configured to use:
-- File: deckmaster-logo.png
-- Background color: #233973 (your app's primary blue)
-- Base size: 300x150 (will scale appropriately)
-
-Current configuration in Interpolation.App.csproj:
-<MauiSplashScreen Include="Resources\Splash\deckmaster-logo.png" Color="#233973" BaseSize="300,150" />
+The project uses the default .NET MAUI splash configuration with just a background color.

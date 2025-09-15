@@ -28,7 +28,7 @@
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationVersion>2</ApplicationVersion>
 
 		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
 		<WindowsPackageType>None</WindowsPackageType>
@@ -45,13 +45,8 @@
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.png" />
 
-		<!-- OS Splash: icon-only mark to avoid text cropping by adaptive icon mask -->
-		<MauiSplashScreen Include="Resources\Splash\splash_icon.png" Color="#FFFFFF" BaseSize="240,240" />
-
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<!-- Ensure splash icon is also available as a drawable resource -->
-		<MauiImage Include="Resources\Splash\splash_icon.png" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 		
 		<!-- Custom Fonts -->
