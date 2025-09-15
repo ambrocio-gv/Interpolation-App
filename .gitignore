@@ -25,3 +25,11 @@ Thumbs.db
 # MAUI specific
 **/platforms/**/bin/
 **/platforms/**/obj/
+
+# Security - DO NOT COMMIT THESE!
+*.jks
+*.keystore
+*.p12
+*.pfx
+appsettings*.json
+secrets.json
