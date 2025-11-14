@@ -18,16 +18,16 @@ public static class InterpolationMath
 
     /// <summary>
     /// Double interpolation (VB6-style chain you provided).
-    /// Returns (B2, C2, A1D1, A2D2, A3D3), rounded to 'round' decimals.
+    /// Returns (B2, C2, A1D1, A2D2, A3D2), rounded to 'round' decimals.
     /// </summary>
-    public static (double? B2, double? C2, double? A1D1, double? A2D2, double? A3D3)
+    public static (double? B2, double? C2, double? A1D1, double? A2D2, double? A3D2)
         DoubleVbStyle(double A1, double a2, double a3,
                       double b1, double b3,
                       double? c1, double? c3,
                       double? D1, double? d2, double? d3,
                       int round = 5)
     {
-        double? B2 = null, C2 = null, A1D1 = null, A2D2 = null, A3D3 = null;
+        double? B2 = null, C2 = null, A1D1 = null, A2D2 = null, A3D2 = null;
 
         if (Math.Abs(A1 - a3) > double.Epsilon)
         {
@@ -41,11 +41,11 @@ public static class InterpolationMath
             A1D1 = b1 - (D1 - d2) * (b1 - (c1 ?? b1)) / (D1 - d3);
             if (B2.HasValue && C2.HasValue)
                 A2D2 = B2.Value - (D1 - d2) * (B2.Value - C2.Value) / (D1 - d3);
-            A3D3 = b3 - (D1 - d2) * (b3 - (c3 ?? b3)) / (D1 - d3);
+            A3D2 = b3 - (D1 - d2) * (b3 - (c3 ?? b3)) / (D1 - d3);
         }
 
         static double? R(double? v, int r) => v.HasValue ? Math.Round(v.Value, r) : null;
-        return (R(B2, round), R(C2, round), R(A1D1, round), R(A2D2, round), R(A3D3, round));
+        return (R(B2, round), R(C2, round), R(A1D1, round), R(A2D2, round), R(A3D2, round));
     }
 
     /// <summary>

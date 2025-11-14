@@ -5,10 +5,10 @@
              BackgroundColor="{StaticResource Secondary}">
 
   <ScrollView>
-    <VerticalStackLayout Padding="16,16,16,12" Spacing="8">
+    <VerticalStackLayout Padding="16,4,16,12" Spacing="8">
 
       <!-- Top Action Buttons (Right Aligned) -->
-      <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,0">
+      <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,4">
         <HorizontalStackLayout Grid.Column="1" Spacing="12" HorizontalOptions="End">
           <Button x:Name="btnInterpolate" Text="Interpolate" BackgroundColor="{StaticResource Primary}" TextColor="White">
             <Button.Shadow>
@@ -24,7 +24,7 @@
       </Grid>
 
       <!-- ===== SINGLE MODE SECTION ===== -->
-      <Border x:Name="singleFrame" Style="{StaticResource CardBorder}" Stroke="{StaticResource Primary}" BackgroundColor="#F8F9FA" IsVisible="True" HorizontalOptions="Fill" Margin="0,0,0,0">
+      <Border x:Name="singleFrame" Style="{StaticResource CardBorder}" Stroke="{StaticResource Primary}" BackgroundColor="#F8F9FA" IsVisible="True" HorizontalOptions="Fill" Margin="0,4,0,0">
         <VerticalStackLayout Spacing="12">
           <Label Text="Single (1-D) Linear Interpolation" FontAttributes="Bold" TextColor="#333333" />
 
@@ -82,7 +82,7 @@
       </Border>
 
       <!-- ===== DOUBLE MODE SECTION ===== -->
-      <Border x:Name="doubleFrame" Style="{StaticResource CardBorder}" Stroke="{StaticResource Primary}" BackgroundColor="#F8F9FA" IsVisible="False" HorizontalOptions="Fill" Margin="0,0,0,0">
+      <Border x:Name="doubleFrame" Style="{StaticResource CardBorder}" Stroke="{StaticResource Primary}" BackgroundColor="#F8F9FA" IsVisible="False" HorizontalOptions="Fill" Margin="0,8,0,0">
         <VerticalStackLayout Spacing="12">
           <Label Text="Bilinear Interpolation" FontAttributes="Bold" />
 
@@ -176,8 +176,8 @@
               </VerticalStackLayout>
             </Border>
             <VerticalStackLayout Grid.Row="3" Grid.Column="2" Spacing="2" Padding="4,2,4,4" BackgroundColor="#C0C0C0">
-              <Label Text="A3D3" FontSize="10"/>
-              <Label x:Name="a3d3" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+              <Label Text="A3D2" FontSize="10"/>
+              <Label x:Name="a3d2" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
             </VerticalStackLayout>
             <Border Grid.Row="3" Grid.Column="3" Stroke="Black" StrokeThickness="1" BackgroundColor="White">
               <VerticalStackLayout Spacing="2" Padding="4,2,4,4">

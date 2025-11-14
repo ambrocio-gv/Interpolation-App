@@ -177,7 +177,7 @@ public partial class MainPage : ContentPage
         b2.Text   = T(V21);
         a2d2.Text = hasAllCoreInputs ? T(V22) : "";  // Only show result when all inputs complete
         c2.Text   = T(V23);
-        a3d3.Text = T(V32);
+        a3d2.Text = T(V32);
 
         // Hide soft keyboard only when full bilinear result is produced
         if (hasAllCoreInputs && V22.HasValue)
@@ -188,7 +188,7 @@ public partial class MainPage : ContentPage
     {
         foreach (var t in new[] { d1, d2, d3, a1, a2, a3, b1, c1, b3, c3 })
             t.Text = string.Empty;
-        foreach (var l in new[] { a1d2, b2, a2d2, c2, a3d3 })
+        foreach (var l in new[] { a1d2, b2, a2d2, c2, a3d2 })
             l.Text = string.Empty;
     }
 
